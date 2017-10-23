@@ -74,7 +74,6 @@ public class GameField extends JPanel{
         }
         return true;
     }
-
     @Override
     protected void paintComponent(Graphics gr){
         Graphics2D g = (Graphics2D)gr;
@@ -86,28 +85,24 @@ public class GameField extends JPanel{
             g.drawLine(0, i*cellHeight, width, i*cellHeight);
             g.drawLine(i*cellWidth, 0, i*cellWidth, height);
         }
+        for(int i = 0; i < SIZE; i++){
+            for(int j = 0; j < SIZE; j++){
+                if(map[i][j] == 'X'){
+                    BasicStroke pen1 = new BasicStroke(10);
+                    g.setStroke(pen1);
+                    g.setColor(Color.RED);
+                    g.drawLine(i*cellWidth + 10, j*cellHeight + 10, (i+1)*cellWidth - 10, (j+1)*cellHeight - 10);
+                    g.drawLine((i+1)*cellWidth - 10, j*cellHeight + 10, i*cellWidth + 10, (j+1)*cellHeight - 10);
 
-            for(int i = 0; i < SIZE; i++){
-                for(int j = 0; j < SIZE; j++){
-                    if(map[i][j] == 'X'){
-                        BasicStroke pen1 = new BasicStroke(10);
-                        g.setStroke(pen1);
-                        g.setColor(Color.RED);
-                        g.drawLine(i*cellWidth + 10, j*cellHeight + 10, (i+1)*cellWidth - 10, (j+1)*cellHeight - 10);
-                        g.drawLine((i+1)*cellWidth - 10, j*cellHeight + 10, i*cellWidth + 10, (j+1)*cellHeight - 10);
-
-                    }
-                    if(map[i][j] == 'O'){
-                        BasicStroke pen2 = new BasicStroke(10);
-                        g.setStroke(pen2);
-                        g.setColor(Color.BLUE);
-                        g.drawOval(i*cellWidth + 10, j*cellHeight + 10, cellWidth - 20, cellHeight - 20);
-                        if (checkWin('O')) break;
-                    }
+                }
+                if(map[i][j] == 'O'){
+                    BasicStroke pen2 = new BasicStroke(10);
+                    g.setStroke(pen2);
+                    g.setColor(Color.BLUE);
+                    g.drawOval(i*cellWidth + 10, j*cellHeight + 10, cellWidth - 20, cellHeight - 20);
                 }
             }
-
-
+        }
     }
 }
 
