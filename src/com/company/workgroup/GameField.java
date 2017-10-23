@@ -31,7 +31,7 @@ public class GameField extends JPanel{
                         }
                         else System.out.println("Вы победили!");
                     }else System.out.println("Некорректный ввод");
-                    repaint();//вызывает метод paintComponent();
+                    repaint();
                 }else System.out.println("Победил компьютер!");
             }
         });
@@ -76,15 +76,15 @@ public class GameField extends JPanel{
     }
 
     @Override
-    protected void paintComponent(Graphics gr){ //вызывается для отрисовки JPanel.
+    protected void paintComponent(Graphics gr){
         Graphics2D g = (Graphics2D)gr;
         width = getWidth();
         height = getHeight();
         cellWidth = width/SIZE;
         cellHeight = height/SIZE;
         for(int i = 0; i < SIZE + 1; i++){
-            g.drawLine(0, i*cellHeight, width, i*cellHeight); //горизонтальная линия
-            g.drawLine(i*cellWidth, 0, i*cellWidth, height); //вертикальная линия
+            g.drawLine(0, i*cellHeight, width, i*cellHeight);
+            g.drawLine(i*cellWidth, 0, i*cellWidth, height);
         }
 
             for(int i = 0; i < SIZE; i++){
